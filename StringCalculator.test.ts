@@ -5,8 +5,8 @@ describe('StringCalculator', () => {
         expect(StringCalculator.Add('')).toBe(0);
     });
 
-    it('should return 1 for "1"', () => {
-        expect(StringCalculator.Add('1')).toBe(1);
+    it.each(['1', '4', '5'])('should return 1 for "1"', (param) => {
+        expect(StringCalculator.Add(param)).toBe(parseInt(param));
     });
 
     it.each(['1,2', '4,5', '1,4'])('should return sum for %i', (param) => {
