@@ -52,6 +52,6 @@ describe('StringCalculator', () => {
             expect(() => StringCalculator.Add(param)).toThrow(n.toString());
         }
 
-        expect(StringCalculator.Add(param)).toThrow('negatives not allowed');
+        expect(() => StringCalculator.Add(param)).toThrow('negatives not allowed');
     });
 });
