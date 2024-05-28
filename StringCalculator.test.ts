@@ -21,4 +21,13 @@ describe('StringCalculator', () => {
     ('should return sum for %p: %i', (param, value) => {
         expect(StringCalculator.Add(param)).toBe(value);
     });
+
+    it.each([
+        ['1\n2,3', 6 ],
+        ['4,5\n6', 15 ],
+        ['1,4,5,100\n53', 163 ]
+    ])
+    ('should return sum for %p: %i with line breaks', (param, value) => {
+        expect(StringCalculator.Add(param)).toBe(value);
+    });
 });
