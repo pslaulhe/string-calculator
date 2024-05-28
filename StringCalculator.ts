@@ -1,7 +1,8 @@
 
 export class StringCalculator {
     static Add(numbers: string): number {
+        const numbersArray = numbers.split(',').map(n => parseInt(n));
         if (numbers === '') return 0;
-        else return parseInt(numbers.split(',')[0]) + (numbers.split(',').length > 1 ? parseInt(numbers.split(',')[1]) : 0);
+        else return numbersArray.reduce((a, b) => a + b);
     }
 }
