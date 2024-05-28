@@ -9,7 +9,16 @@ describe('StringCalculator', () => {
         expect(StringCalculator.Add(param)).toBe(parseInt(param));
     });
 
-    it.each(['1,2', '4,5', '1,4'])('should return sum for %i', (param) => {
+    it.each(['1,2', '4,5', '1,4'], )('should return sum for %i', (param) => {
         expect(StringCalculator.Add(param)).toBe(parseInt(param.split(',').reduce((a, b) => (parseInt(a) + parseInt(b)).toString())));
+    });
+
+    it.each([
+        ['1,2,3', 6 ],
+        ['4,5,6', 15 ],
+        ['1,4,5,100,53', 163 ]
+    ])
+    ('should return sum for %p: %i', (param, value) => {
+        expect(StringCalculator.Add(param)).toBe(value);
     });
 });
