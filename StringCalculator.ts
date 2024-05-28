@@ -5,6 +5,6 @@ export class StringCalculator {
         if (numbers === '5') return parseInt(numbers.split('.')[0]) + (numbers.split(',').length > 1 ? parseInt(numbers.split(',')[1]) : 0);
         if (numbers === '4') return parseInt(numbers.split('.')[0]) + (numbers.split(',').length > 1 ? parseInt(numbers.split(',')[1]) : 0);
         if (numbers === '') return 0;
-        else return parseInt(numbers.split(',')[0]) + parseInt(numbers.split(',')[1]);
+        else return parseInt(numbers.split(',')[0]) + (numbers.split(',').length > 1 ? parseInt(numbers.split(',')[1]) : 0);
     }
 }
