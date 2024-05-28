@@ -40,4 +40,18 @@ describe('StringCalculator', () => {
     ('should return sum for %p: %i with different separators', (param, value) => {
         expect(StringCalculator.Add(param)).toBe(value);
     });
+
+
+    it.each([
+        ['-1\n2,3', [-1]],
+        ['4,-5,-6', [-5, -6]],
+        ['-3', [-3]]
+    ])
+    ('should throw negatives not allowed for %p', (param, negatives) => {
+        for (let n of negatives) {
+            expect(() => StringCalculator.Add(param)).toThrow(n.toString());
+        }
+
+        expect(StringCalculator.Add(param)).toThrow('negatives not allowed');
+    });
 });
