@@ -2,10 +2,11 @@
 export class StringCalculator {
     static Add(numbers: string): number {
         numbers = this.replaceSeparatorsWithComma(numbers);
-        let numbersArray = numbers.split(',').map(n => parseInt(n));
-        this.throwIfContainNegatives(numbersArray);
 
+        let numbersArray = numbers.split(',').map(n => parseInt(n));
         numbersArray = numbersArray.filter(n => n <= 1000);
+
+        this.throwIfContainNegatives(numbersArray);
 
         if (numbers === '' || numbersArray.length == 0) return 0;
         else return numbersArray.reduce((a, b) => a + b);
@@ -15,10 +16,10 @@ export class StringCalculator {
         if (numbers.startsWith('//')) {
             const separator = numbers[2];
             numbers = numbers.substring(4);
-            numbers = numbers.replace(separator, ',');
+            numbers = numbers.replaceAll(separator, ',');
         }
 
-        return numbers.replace('\n', ',');
+        return numbers.replaceAll('\n', ',');
     }
 
     private static throwIfContainNegatives(numbersArray: number[]) {
