@@ -2,10 +2,12 @@
 export class StringCalculator {
     static Add(numbers: string): number {
         numbers = this.replaceSeparatorsWithComma(numbers);
-        const numbersArray = numbers.split(',').map(n => parseInt(n));
+        let numbersArray = numbers.split(',').map(n => parseInt(n));
         this.throwIfContainNegatives(numbersArray);
 
-        if (numbers === '') return 0;
+        numbersArray = numbersArray.filter(n => n <= 1000);
+
+        if (numbers === '' || numbersArray.length == 0) return 0;
         else return numbersArray.reduce((a, b) => a + b);
     }
 
