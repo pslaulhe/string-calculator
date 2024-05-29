@@ -54,4 +54,13 @@ describe('StringCalculator', () => {
 
         expect(() => StringCalculator.Add(param)).toThrow('negatives not allowed');
     });
+
+    it.each([
+        ['1001', 0 ],
+        ['4,5,6,1001', 15 ],
+        ['1,4,5,34561300,53,1001', 63 ]
+    ])
+    ('should ignore numbers greater than 1000', (param, value) => {
+        expect(StringCalculator.Add(param)).toBe(value);
+    });
 });
