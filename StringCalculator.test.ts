@@ -33,9 +33,9 @@ describe('StringCalculator', () => {
 
     it.each([
         ['//|\n1', 1 ],
-        ['//;\n1\n2,3', 6 ],
-        ['//:\n4,5\n6', 15 ],
-        ['//*\n1,4,5,100\n53', 163 ]
+        ['//;\n1;2;3', 6 ],
+        ['//:\n4:5:6', 15 ],
+        ['//*\n1*4*5*100*53', 163 ]
     ])
     ('should return sum for %p: %i with different separators', (param, value) => {
         expect(StringCalculator.Add(param)).toBe(value);
