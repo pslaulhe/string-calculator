@@ -41,6 +41,16 @@ describe('StringCalculator', () => {
         expect(StringCalculator.Add(param)).toBe(value);
     });
 
+    it.each([
+        ['//[|]\n1', 1 ],
+        ['//[;+]\n1;+2,3', 6 ],
+        ['//[*123]\n4*1235*1236', 15 ],
+        ['//[sep]\n1sep4sep5sep100sep53', 163 ]
+    ])
+    ('should return sum for %p: %i with different separators of arbitrary length', (param, value) => {
+        expect(StringCalculator.Add(param)).toBe(value);
+    });
+
 
     it.each([
         ['-1\n2,3', [-1]],
