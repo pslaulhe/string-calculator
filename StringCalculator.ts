@@ -14,9 +14,13 @@ export class StringCalculator {
 
     private static replaceSeparatorsWithComma(numbers: string) {
         if (numbers.startsWith('//')) {
-            const separator = numbers[2];
-            numbers = numbers.substring(4);
-            numbers = numbers.replaceAll(separator, ',');
+            const regex = new RegExp('\/\/(?:\\[(.*)\]|(.))', 'g');
+            const separatorMatch = numbers.matchAll(regex);
+            for (let match of separatorMatch) {
+                const separator = match[1] ?? match[2];
+                numbers = numbers.substring(numbers.indexOf('\n') + 1);
+                numbers = numbers.replaceAll(separator!, ',');
+            }
         }
 
         return numbers.replaceAll('\n', ',');

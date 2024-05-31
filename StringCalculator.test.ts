@@ -51,7 +51,6 @@ describe('StringCalculator', () => {
         expect(StringCalculator.Add(param)).toBe(value);
     });
 
-
     it.each([
         ['-1\n2,3', [-1]],
         ['4,-5,-6', [-5, -6]],
