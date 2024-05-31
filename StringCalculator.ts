@@ -14,10 +14,20 @@ export class StringCalculator {
 
     private static replaceSeparatorsWithComma(numbers: string) {
         if (numbers.startsWith('//')) {
-            const regex = new RegExp('\/\/(?:\\[(.*)\]|(.))', 'g');
-            const separatorMatch = numbers.matchAll(regex);
-            for (let match of separatorMatch) {
+            // const regexAll = new RegExp('\\[([^\]]*)\]|([^\]])\n', 'g');
+            const regex1 = new RegExp('\\[([^\\]]*)\]', 'g');
+            const regex2 = new RegExp('\/\/([^\\[])', 'g');
+
+            for (let match of numbers.matchAll(regex1)) {
+                console.log(match);
                 const separator = match[1] ?? match[2];
+                numbers = numbers.substring(numbers.indexOf('\n') + 1);
+                numbers = numbers.replaceAll(separator!, ',');
+            }
+
+            for (let match of numbers.matchAll(regex2)) {
+                console.log(match);
+                const separator = match[1];
                 numbers = numbers.substring(numbers.indexOf('\n') + 1);
                 numbers = numbers.replaceAll(separator!, ',');
             }
