@@ -51,6 +51,17 @@ describe('StringCalculator', () => {
         expect(StringCalculator.Add(param)).toBe(value);
     });
 
+
+    it.each([
+        ['//[|]\n1', 1 ],
+        ['//[;+][|]\n1;+2|3', 6 ],
+        ['//[*123][sep/]\n4*1235*1236sep/10', 25 ],
+        ['//[sep][-][k!][¨^]\n1sep4sep5sep100sep53-5k!15¨^7', 190 ]
+    ])
+    ('should return sum for %p: %i with multiple separators of arbitrary length', (param, value) => {
+        expect(StringCalculator.Add(param)).toBe(value);
+    });
+
     it.each([
         ['-1\n2,3', [-1]],
         ['4,-5,-6', [-5, -6]],
